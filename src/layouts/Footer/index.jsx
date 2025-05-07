@@ -14,7 +14,7 @@ function Footer() {
                           <img src="" alt="" />
                           <p>Download App for Android and ios mobile phone.</p>
                       </div>
-                      <div class="footer-col-3">
+                      <div className="footer-col-3">
                           <h3>Download Our App</h3>
                           <ul>
                               <li>Coupons</li>
@@ -23,7 +23,7 @@ function Footer() {
                               <li>Join Affiliate</li>
                           </ul>
                       </div>
-                      <div class="footer-col-4">
+                      <div className="footer-col-4">
                           <h3>Follow us</h3>
                           <ul>
                               <li>Facebook</li>
@@ -34,7 +34,7 @@ function Footer() {
                       </div>
                   </div>
                   <hr />
-                      <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+                      <p className="copyright">Copyright 2020 - Easy Tutorials</p>
               </div>
           </div>
       </div>

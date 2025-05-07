@@ -30,7 +30,7 @@ function Account ()
     const [ password, setPassword ] = useState( "" );
     const [ email, setEmail ] = useState( "" );
 
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const handleSubmit = ( e ) =>
     {
@@ -41,11 +41,11 @@ const dispatch = useDispatch();
                 email: email,
             } )
         )
-    }       
+    }
 
-    return (                    
+    return (
         <div className="account-page">
-            <div className="container">                 
+            <div className="container">
                 <div className="row">
                     <div className="col-2">
                         <img src="" />
@@ -64,10 +64,10 @@ const dispatch = useDispatch();
                                 <a href="#">Forgot Password</a>
                             </form>
                             <form ref={ regFormRef } id="RegForm">
-                                <input type="text" placeholder="UserName" onChange={(e)=>setUsername(e.target.value)}/>
-                                <input type="email" placeholder="Email" onChange={ ( e ) => setEmail( e.target.value )}/>
-                                <input type="pass" placeholder="PassWord" onChange={(e)=>setPassword(e.target.value)}/>
-                                <button type="submit" className="btn" onClick={()=>handleSubmit()}>Register</button>
+                                <input type="text" placeholder="UserName" onChange={ ( e ) => setUsername( e.target.value ) } />
+                                <input type="email" placeholder="Email" onChange={ ( e ) => setEmail( e.target.value ) } />
+                                <input type="pass" placeholder="PassWord" onChange={ ( e ) => setPassword( e.target.value ) } />
+                                <button type="submit" className="btn" onClick={ () => handleSubmit() }>Register</button>
                             </form>
                         </div>
                     </div>

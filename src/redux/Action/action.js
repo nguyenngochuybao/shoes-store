@@ -7,11 +7,11 @@ export const registerUserRequest = () =>
     };
 }
 
-export const registerUserSuccess = ( user ) =>
+export const registerUserSuccess = ( users ) =>
 {
     return {
         type: REGISTER_USER_SUCCESS,
-        payload: user,
+        payload: users,
     };
 }
 
