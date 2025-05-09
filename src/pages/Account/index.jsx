@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
-import { useDispatch, } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useSelector } from 'react-redux';
 import { registerUserRequest } from '../../redux/Action/action';
+import { loginUserRequest } from '../../redux/Action/action';
+
 
 
 
@@ -26,22 +27,42 @@ function Account ()
         indicatorRef.current.style.transform = "translateX(0px)";
     };
 
-    const [ userName, setUsername ] = useState( "" );
-    const [ password, setPassword ] = useState( "" );
-    const [ email, setEmail ] = useState( "" );
+    const [ name, setUsername ] = useState();
+    const [ password, setPassword ] = useState();
+    const [ email, setEmail ] = useState();
+
+    const [ nameLogin, setNameLogin ] = useState();
+    const [ passwordLogin, setPasswordLogin ] = useState();
+    console.log( "nameLogin", nameLogin, passwordLogin );
 
     const dispatch = useDispatch();
 
-    const handleSubmit = ( e ) =>
+    const handleSubmit = () =>
     {
         dispatch(
             registerUserRequest( {
-                userName: userName,
+                name: name,
                 password: password,
                 email: email,
             } )
         )
+        setUsername( "" );
+        setPassword( "" );
+        setEmail( "" );
     }
+
+    const handleLogin = () =>
+    {
+        dispatch( loginUserRequest( {
+
+            name: nameLogin,
+            password: passwordLogin,
+
+        } ) )
+        setNameLogin( "" );
+        setPasswordLogin( "" );
+    }
+
 
     return (
         <div className="account-page">
@@ -58,9 +79,9 @@ function Account ()
                                 <hr ref={ indicatorRef } id="Indicator"></hr>
                             </div>
                             <form ref={ loginFormRef } id="LoginForm">
-                                <input type="text" placeholder="UserName" />
-                                <input type="pass" placeholder="PassWord" />
-                                <button type="submit" className="btn">Login</button>
+                                <input type="text" placeholder="UserName" onChange={ ( e ) => setNameLogin( e.target.value ) } />
+                                <input type="pass" placeholder="PassWord" onChange={ ( e ) => setPasswordLogin( e.target.value ) } />
+                                <button type="submit" className="btn" onClick={ () => handleLogin() }>Login</button>
                                 <a href="#">Forgot Password</a>
                             </form>
                             <form ref={ regFormRef } id="RegForm">

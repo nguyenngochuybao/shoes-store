@@ -1,9 +1,22 @@
-[ {
-        "users": [
-            {
-                "id": 1,
-                "name": "John Doe",
-                "email": ""
-            }
-        ]
-    } ]
+{
+  "users": [
+    {
+      "name": "huy",
+      "password": "baokx12@",
+      "email": "Bao@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "huy",
+      "password": "123",
+      "email": "bao@gmail.com",
+      "id": 2
+    },
+    {
+      "name": "baokx12",
+      "password": "Baokx12@",
+      "email": "baokx12@gmail.com",
+      "id": 3
+    }
+  ]
+}
