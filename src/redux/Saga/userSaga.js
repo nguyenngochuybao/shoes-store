@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { registerUserApi, loginUserAPI } from "./apiSaga";
-import { registerUserSuccess, loginUserSuccess, loginUserFail } from "../Action/action";
-import { REGISTER_USER_REQUEST, LOGIN_USER_REQUEST } from "../Constants/constants";
+import { registerUserSuccess, loginUserSuccess, loginUserFail, logoutUserSuccess } from "../Action/action";
+import { REGISTER_USER_REQUEST, LOGIN_USER_REQUEST, LOGOUT_USER_REQUEST } from "../Constants/constants";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -43,11 +43,27 @@ function* loginUser ( action )
     }
 }
 
+function* logoutUser ( action )
+{
+    try
+    {
+        localStorage.removeItem( "user" );
+        yield put( logoutUserSuccess( null ) );
+        alert( "Đăng xuất thành công" );
+    }
+    catch ( error )
+    {
+        alert( "Đăng xuất không thành công" );
+    }
+}
+
 
 function* userSaga ()
 {
     yield takeEvery( REGISTER_USER_REQUEST, fetchUser );
     yield takeLatest( LOGIN_USER_REQUEST, loginUser );
+    yield takeLatest( LOGOUT_USER_REQUEST, logoutUser );
+
 
 }
 

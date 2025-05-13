@@ -19,7 +19,7 @@ function Account ()
     {
         if ( user )
         {
-            navigate( '/userInfo' );
+            navigate( '/' );
         }
     }, [ user, navigate]);
 

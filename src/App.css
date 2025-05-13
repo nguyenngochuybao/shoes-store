@@ -51,7 +51,7 @@ p {
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    
+
 }
 
 .col-2 {
@@ -144,6 +144,7 @@ p {
     left: 50%;
     transform: translateX(-50%);
 }
+
 h4 {
     color: #555;
     font-weight: normal;
@@ -558,31 +559,120 @@ form a {
     transition: 1s;
 }
 
-@media only screen and (max-width: 800px) {
-    .row {
-        text-align: center;
-    }
+/* Container của mục Account */
+.nav-account {
+    position: relative;
+    display: inline-block;
+}
 
-    .col-2,
-    .col-3,
-    .col-4 {
-        flex-basis: 100%;
-    }
+/* Nút Account */
+.nav-account .account-toggle {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
-    .single-product .row {
-        text-align: left;
-    }
 
-    .single-product .col-2 {
-        padding: 20px 0;
-    }
+/* Khi hover hoặc click để mở dropdown */
+.nav-account:hover .account-dropdown,
+.nav-account.open .account-dropdown {
+    display: block;
+}
 
-    .single-product h1 {
-        font-size: 26px;
-        line-height: 32px;
-    }
+/* Dropdown menu */
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    display: none;
+    z-index: 999;
+}
 
-    .cart-info p {
-        display: none;
-    }
+/* Mỗi mục trong dropdown */
+.account-dropdown li {
+    list-style: none;
+    padding: 10px 20px;
+    transition: background 0.2s ease;
+}
+
+/* Mục hiển thị username */
+.account-dropdown li span {
+    display: block;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Link hoặc nút trong dropdown */
+.account-dropdown li a,
+.account-dropdown li button {
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+}
+
+.account-dropdown li:hover {
+    background-color: #f5f5f5;
+}
+
+.account-dropdown li button:hover,
+.account-dropdown li a:hover {
+    color: #ff523b;
+
+}
+
+.userInfo {
+    background-color: gray;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-userInfo {
+    background-color: rgb(250, 241, 250);
+    width: 80%;
+    height: 450px;
+    border-radius: 15px;
+    display: flex;
+}
+
+
+.userInfo-left{
+    width: 40%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userInfo-right{
+    width: 60%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userInfo-avt{
+ width: 300px;
+ height: 300px; 
+    border-radius: 50%;
+    background-color: #fff;
 }
