@@ -6,8 +6,12 @@ import
 } from "../Constants/constants";
 
 const initialState = {
-    user: [],
-    loading: false,
+    registerData: {
+        load: false,
+        error: ""
+    },
+    user: null,
+    error: null,
 }
 
 export const registerUserReducer = ( state = initialState, action ) =>
@@ -19,28 +23,38 @@ export const registerUserReducer = ( state = initialState, action ) =>
         case REGISTER_USER_REQUEST:
             return {
                 ...state,
-                loading: true,
+                registerData: {
+                    ...state.registerData,
+                    loading: true,
+                    error: "",
+                }
             };
         case REGISTER_USER_SUCCESS:
             return {
                 ...state,
-                loading: false,
-                user: action.payload,
+                registerData: {
+                    ...state.registerData,
+                    load: true,
+                    error: "",
+                }
             };
         case REGISTER_USER_FAIL:
             return {
                 ...state,
-                loading: false,
-                error: action.payload,
+                registerData: {
+                    ...state.registerData,
+                    loading: false,
+                    error: action.payload,
+                },
             };
-
         // Login user
         case LOGIN_USER_REQUEST:
-            return { ...state, loading: true };
+            return { ...state, error: null };
         case LOGIN_USER_SUCCESS:
-            return { ...state, loading: false, user: action.payload };
+            return { ...state, user: action.payload, error: null };
         case LOGIN_USER_FAIL:
-            return { ...state, loading: false, error: action.payload };
+            return { ...state, error: action.payload };
+
         default:
             return state;
     }

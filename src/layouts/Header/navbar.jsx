@@ -15,7 +15,7 @@ function Navbar ()
                   <li><Link to="/products">Products</Link></li>
                   <li><Link to="/about">About</Link></li>
                   <li><Link to="/contact">Contact</Link></li>
-                  <li><Link to="/account">Account</Link></li>
+                  <li><Link to="/account">Account <i class="fa-solid fa-angle-up"></i></Link></li>
               </ul>
           </nav>
       </div>

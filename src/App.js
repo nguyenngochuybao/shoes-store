@@ -8,6 +8,7 @@ import Products from './pages/Products';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Account from './pages/Account';
+import UserInfo from './pages/UserInfo';
 
 import Navbar from './layouts/Header/navbar';
 
@@ -26,6 +27,8 @@ function App ()
         <Route path="/about" element={ <About /> } />
         <Route path="/contact" element={ <Contact /> } />
         <Route path="/account" element={ <Account /> } />
+        <Route path="/account" element={ <Account /> } />
+        <Route path="/userInfo" element={ <UserInfo /> } />
       </Routes>
       <Footer />
     </div>

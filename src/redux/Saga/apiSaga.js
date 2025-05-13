@@ -1,4 +1,5 @@
 import axios from "axios";
+import { act } from "react";
 
 const API_URL = "http://localhost:3000/users";
 
@@ -9,3 +10,12 @@ export const registerUserApi = async ( users ) =>
   return response.data;
 };
 
+export const loginUserAPI = async ( { name, password } ) =>
+{
+  return await axios.get( API_URL, {
+    params: {
+      name,
+      password
+    }
+  })
+}

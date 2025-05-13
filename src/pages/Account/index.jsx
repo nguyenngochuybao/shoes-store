@@ -1,14 +1,28 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { registerUserRequest } from '../../redux/Action/action';
 import { loginUserRequest } from '../../redux/Action/action';
+
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 function Account ()
 {
+
+    const user = useSelector( ( state ) => state.user?.user );
+    const navigate = useNavigate();
+    useEffect( () =>
+    {
+        if ( user )
+        {
+            navigate( '/userInfo' );
+        }
+    }, [ user, navigate]);
+
     const loginFormRef = useRef( null );
     const regFormRef = useRef( null );
     const indicatorRef = useRef( null );
@@ -33,7 +47,7 @@ function Account ()
 
     const [ nameLogin, setNameLogin ] = useState();
     const [ passwordLogin, setPasswordLogin ] = useState();
-    console.log( "nameLogin", nameLogin, passwordLogin );
+    console.log( nameLogin, passwordLogin )
 
     const dispatch = useDispatch();
 
@@ -51,14 +65,16 @@ function Account ()
         setEmail( "" );
     }
 
-    const handleLogin = () =>
+    const handleLogin = ( e ) =>
     {
-        dispatch( loginUserRequest( {
-
-            name: nameLogin,
-            password: passwordLogin,
-
-        } ) )
+        e.preventDefault();
+        dispatch(
+            loginUserRequest(
+                {
+                    name: nameLogin,
+                    password: passwordLogin,
+                }
+            ) )
         setNameLogin( "" );
         setPasswordLogin( "" );
     }
@@ -81,7 +97,7 @@ function Account ()
                             <form ref={ loginFormRef } id="LoginForm">
                                 <input type="text" placeholder="UserName" onChange={ ( e ) => setNameLogin( e.target.value ) } />
                                 <input type="pass" placeholder="PassWord" onChange={ ( e ) => setPasswordLogin( e.target.value ) } />
-                                <button type="submit" className="btn" onClick={ () => handleLogin() }>Login</button>
+                                <button type="submit" className="btn" onClick={ ( e ) => handleLogin( e ) }>Login</button>
                                 <a href="#">Forgot Password</a>
                             </form>
                             <form ref={ regFormRef } id="RegForm">

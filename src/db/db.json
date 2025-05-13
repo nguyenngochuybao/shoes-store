@@ -7,16 +7,10 @@
       "id": 1
     },
     {
-      "name": "huy",
+      "name": "123",
       "password": "123",
-      "email": "bao@gmail.com",
+      "email": "123",
       "id": 2
-    },
-    {
-      "name": "baokx12",
-      "password": "Baokx12@",
-      "email": "baokx12@gmail.com",
-      "id": 3
     }
   ]
 }
