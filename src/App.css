@@ -637,7 +637,7 @@ form a {
 }
 
 .userInfo {
-    background-color: gray;
+    background-color: rgb(236, 236, 236);
     width: 100%;
     height: 500px;
     display: flex;
@@ -646,7 +646,6 @@ form a {
 }
 
 .form-userInfo {
-    background-color: rgb(250, 241, 250);
     width: 80%;
     height: 450px;
     border-radius: 15px;
@@ -654,7 +653,7 @@ form a {
 }
 
 
-.userInfo-left{
+.userInfo-left {
     width: 40%;
     height: 450px;
     display: flex;
@@ -662,7 +661,7 @@ form a {
     align-items: center;
 }
 
-.userInfo-right{
+.userInfo-right {
     width: 60%;
     height: 450px;
     display: flex;
@@ -670,9 +669,49 @@ form a {
     align-items: center;
 }
 
-.userInfo-avt{
- width: 300px;
- height: 300px; 
+.userInfo-avt {
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: aqua;
 }
+
+.userInfo-inp{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;   
+}
+
+.left{
+
+}
+
+.right{
+    display: block;
+}
+
+.left>li>p{
+    margin: 5px;
+    margin-top: 14px;
+    font-size: 22px;
+}
+
+.left>li>b{
+   font-size: 22px;
+   color: #ff523b;
+}
+
+
+.right>li>input{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 40px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ff523b;
+}
+

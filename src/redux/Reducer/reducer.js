@@ -11,6 +11,7 @@ const initialState = {
         load: false,
         error: ""
     },
+    
     user: null,
     error: null,
 }
