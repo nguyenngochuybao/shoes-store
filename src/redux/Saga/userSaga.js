@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { registerUserApi, loginUserAPI } from "./apiSaga";
-import { registerUserSuccess, loginUserSuccess, loginUserFail, logoutUserSuccess } from "../Action/action";
-import { REGISTER_USER_REQUEST, LOGIN_USER_REQUEST, LOGOUT_USER_REQUEST } from "../Constants/constants";
+import { registerUserSuccess, loginUserSuccess, loginUserFail, logoutUserSuccess, getProductsSuccess } from "../Action/action";
+import { REGISTER_USER_REQUEST, LOGIN_USER_REQUEST, LOGOUT_USER_REQUEST, GET_PRODUCTS_REQUEST } from "../Constants/constants";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -57,12 +57,27 @@ function* logoutUser ( action )
     }
 }
 
+function* fetchProducts (action)
+{
+    try
+    {
+        const response = yield call( axios.get, "http://localhost:3000/products" );
+        yield put( getProductsSuccess( response.data ) );
+        console.log( "data", response.data );
+    }
+    catch ( error )
+    {
+       console.log( error );
+    }
+}
 
 function* userSaga ()
 {
     yield takeEvery( REGISTER_USER_REQUEST, fetchUser );
     yield takeLatest( LOGIN_USER_REQUEST, loginUser );
     yield takeLatest( LOGOUT_USER_REQUEST, logoutUser );
+    yield takeEvery( GET_PRODUCTS_REQUEST, fetchProducts );
+
 
 
 }

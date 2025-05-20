@@ -2,7 +2,8 @@ import
     {
         REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAIL,
         LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL,
-        LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAIL
+        LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAIL,
+        GET_PRODUCTS_REQUEST, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAIL,
     } from '../Constants/constants';
 
 
@@ -82,6 +83,29 @@ export const logoutUserFail = ( error ) =>
 {
     return {
         type: LOGOUT_USER_FAIL,
+        payload: error,
+    };
+}
+
+// Action to get user data
+export const getProductsRequest = () =>
+{
+    return {
+        type: GET_PRODUCTS_REQUEST,
+    };
+}
+export const getProductsSuccess = ( user ) =>
+{
+    return {
+        type: GET_PRODUCTS_SUCCESS,
+        payload: user,
+    };
+}
+
+export const getProductsFail = ( error ) =>
+{
+    return {
+        type: GET_PRODUCTS_FAIL,
         payload: error,
     };
 }

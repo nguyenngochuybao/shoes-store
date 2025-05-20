@@ -11,7 +11,7 @@ const initialState = {
         load: false,
         error: ""
     },
-    
+    Products: [],
     user: null,
     error: null,
 }
@@ -82,4 +82,5 @@ export const registerUserReducer = ( state = initialState, action ) =>
         default:
             return state;
     }
+    
 }

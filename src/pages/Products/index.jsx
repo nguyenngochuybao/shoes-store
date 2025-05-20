@@ -1,5 +1,20 @@
+import { useDispatch, useSelector } from "react-redux";
+
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+import { getProductsRequest } from "../../redux/Action/action";
+
 function Products ()
 {
+    const dispatch = useDispatch();
+    const Products = useSelector( ( state ) => state.product?.Products || [] );
+    console.log( "Products", Products );
+
+    useEffect( () =>
+    {
+        dispatch( getProductsRequest() );
+    }, [ dispatch ] );
     return (
         <div className="small-container">
             <div className="row row-2">
@@ -13,174 +28,24 @@ function Products ()
                 </select>
             </div>
             <div className="row">
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
-                <div className="col-4">
-                    <a href=""><img src="http://127.0.0.1:5501/puma.webp" /></a>
-                    <a href="">
-                        <h4>Nemeziz 18.3</h4>
-                    </a>
-                    <div className="rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                    </div>
-                    <p>400.000Đ</p>
-                </div>
+                {
+                    Products.map( ( item, index ) => (
+                        <div className="col-4" key={ index }>
+                            <a href=""><img src={ item.image } /></a>
+                            <a href="">
+                                <h4>{ item.name }</h4>
+                            </a>
+                            <div className="rating">
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star-o"></i>
+                            </div>
+                            <p>{ item.price }</p>
+                        </div>
+                    ) )
+                }
             </div>
             <div className="page-btn">
                 <span>1</span>
