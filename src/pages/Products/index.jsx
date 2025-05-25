@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import axios from "axios";
 import { getProductsRequest } from "../../redux/Action/action";
@@ -30,7 +31,7 @@ function Products ()
             <div className="row">
                 {
                     Products.map( ( item, index ) => (
-                        <div className="col-4" key={ index }>
+                        <Link to={ `/about/${ item.id }` } className="col-4" key={ index }>
                             <a href=""><img src={ item.image } /></a>
                             <a href="">
                                 <h4>{ item.name }</h4>
@@ -43,7 +44,7 @@ function Products ()
                                 <i className="fa fa-star-o"></i>
                             </div>
                             <p>{ item.price }</p>
-                        </div>
+                        </Link>
                     ) )
                 }
             </div>

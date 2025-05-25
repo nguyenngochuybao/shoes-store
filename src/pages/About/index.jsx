@@ -1,28 +1,72 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductRequest } from "../../redux/Action/action";
+import { useNavigate } from "react-router-dom";
+
 function About ()
 {
+    const getProductsState = () =>
+    {
+        const saved = localStorage.getItem( 'productDetail' );
+        return saved ? JSON.parse( saved ) : {};
+    }
+
+    const { id } = useParams();
+    const Products = useSelector( state => state.product?.Products || [] );
+    const [ productState, setProductState ] = useState( getProductsState() );
+
+
+    useEffect( () =>
+    {
+        const product = Products.find( item => item.id === Number( id ) );
+        if ( product ) setProductState( product );
+    }, [ id, Products ] );
+
+
+    useEffect( () =>
+    {
+        localStorage.setItem( 'productDetail', JSON.stringify( productState ) );
+    }, [ productState ] );
+
+
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () =>
+    {
+        dispatch( addProductRequest(
+            productState
+        ) )
+     navigate("/contact")
+    }
+
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="small-container single-product">
                 <div className="row">
                     <div className="col-2">
-                        <img src="" alt="" id="ProductImg" />
+                        <img src={ productState?.image } alt="" id="ProductImg" />
                         <div className="small-img-row">
-                            <img src="" alt="" className="small-img" />
-                        </div>
-                        <div className="small-img-row">
-                            <img src="" alt="" className="small-img" />
-                        </div>
-                        <div className="small-img-row">
-                            <img src="" alt="" className="small-img" />
-                        </div>
-                        <div className="small-img-row">
-                            <img src="" alt="" className="small-img" />
+                            <div className="small-img-col">
+                                <img src={ productState?.image } alt="" className="small-img" />
+                            </div>
+                            <div className="small-img-col">
+                                <img src={ productState?.image } alt="" className="small-img" />
+                            </div>
+                            <div className="small-img-col">
+                                <img src={ productState?.image } alt="" className="small-img" />
+                            </div>
+                            <div className="small-img-col">
+                                <img src={ productState?.image } alt="" className="small-img" />
+                            </div>
                         </div>
                     </div>
                     <div className="col-2">
-                        <p>Home/ T-Shirt</p>
-                        <h1>Red Printd T-Shirt by HRX</h1>
-                        <h4>400.000Đ</h4>
+                        <p>Home/ Shoes</p>
+                        <h1>{ productState?.name }</h1>
+                        <h4>{ productState?.price }</h4>
                         <select>
                             <option>Select Size</option>
                             <option>XXL</option>
@@ -32,7 +76,7 @@ function About ()
                             <option>Small</option>
                         </select>
                         <input type="number" value="1" />
-                        <a href="" className="btn">Add To Cart</a>
+                        <a href="" className="btn" onClick={ () => handleAddToCart() }>Add To Cart</a>
                         <h3>Products Details <i className="fa fa-indent"></i></h3>
                         <br />
                         <p>Tiêu đề</p>

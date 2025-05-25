@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { registerUserApi, loginUserAPI } from "./apiSaga";
-import { registerUserSuccess, loginUserSuccess, loginUserFail, logoutUserSuccess, getProductsSuccess } from "../Action/action";
-import { REGISTER_USER_REQUEST, LOGIN_USER_REQUEST, LOGOUT_USER_REQUEST, GET_PRODUCTS_REQUEST } from "../Constants/constants";
+import { registerUserSuccess, loginUserSuccess, loginUserFail, logoutUserSuccess, getProductsSuccess, addProductSuccess } from "../Action/action";
+import { REGISTER_USER_REQUEST, LOGIN_USER_REQUEST, LOGOUT_USER_REQUEST, GET_PRODUCTS_REQUEST, ADD_PRODUCT_REQUEST } from "../Constants/constants";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -71,12 +71,28 @@ function* fetchProducts (action)
     }
 }
 
+function* handleAddToCart(action) {
+    try {
+      const product = action.payload;
+  console.log("product11111", product);
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      cartItems.push(product);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  
+      yield put( addProductSuccess(product));
+    } catch (error) {
+        console.error("Error adding product to cart:", error);
+        
+    }
+  }
+
 function* userSaga ()
 {
     yield takeEvery( REGISTER_USER_REQUEST, fetchUser );
     yield takeLatest( LOGIN_USER_REQUEST, loginUser );
     yield takeLatest( LOGOUT_USER_REQUEST, logoutUser );
     yield takeEvery( GET_PRODUCTS_REQUEST, fetchProducts );
+    yield takeEvery(ADD_PRODUCT_REQUEST,handleAddToCart)
 
 
 

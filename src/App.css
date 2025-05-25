@@ -416,6 +416,13 @@ input:focus {
     flex-basis: 24%;
     cursor: pointer;
 }
+#ProductImg{
+    width: 100%;
+}
+
+.small-img{
+    width: 100%;
+}
 
 .cart-page {
     margin: 80px auto;
@@ -452,6 +459,14 @@ td input {
 td a {
     color: #ff523b;
     font-size: 12px;
+}
+
+.btn-remove{
+    color: #ff523b;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
 }
 
 td img {

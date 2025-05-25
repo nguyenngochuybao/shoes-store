@@ -4,6 +4,7 @@ import
         LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL,
         LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAIL,
         GET_PRODUCTS_REQUEST, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAIL,
+        ADD_PRODUCT_REQUEST, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_FAIL
     } from '../Constants/constants';
 
 
@@ -106,6 +107,29 @@ export const getProductsFail = ( error ) =>
 {
     return {
         type: GET_PRODUCTS_FAIL,
+        payload: error,
+    };
+}
+
+// Action to add a product
+export const addProductRequest = ( product ) =>
+{
+    return {
+        type: ADD_PRODUCT_REQUEST,
+        payload: product,
+    };
+}
+export const addProductSuccess = ( product ) =>
+{
+    return {
+        type: ADD_PRODUCT_SUCCESS,
+        payload: product,
+    };
+}
+export const addProductFail = ( error ) =>
+{
+    return {
+        type: ADD_PRODUCT_FAIL,
         payload: error,
     };
 }
