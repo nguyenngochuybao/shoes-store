@@ -1,28 +1,16 @@
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 function Contact ()
 {
-    const [ cartItems, setCartItems ] = useState( () =>
-    {
-        const saved = localStorage.getItem( "cartItems" );
-        return saved ? JSON.parse( saved ) : [];
-    } );
-
+ 
+    const cartItems = useSelector( ( state ) => state.cart?.cartItems || [] );
+    console.log( "Cart Items:", cartItems );
+    
     const handleRemoveItem = ( index ) =>
-    {
-        const updatedItems = [ ...cartItems ];
-        updatedItems.splice( index, 1 );
-        setCartItems( updatedItems );
-        localStorage.setItem( "cartItems", JSON.stringify( updatedItems ) );
-    };
+    { 
 
-    const subtotal = cartItems.reduce( ( total, item ) =>
-    {
-        const price = Number( item.price ) || 0;
-        const quantity = Number( item.quantity ) || 1;
-        return total + price * quantity;
-    }, 0 );
-
+    }
     return (
         <>
             <div className="small-container cart-page">
@@ -72,7 +60,7 @@ function Contact ()
                         <tbody>
                             <tr>
                                 <td>Subtotal</td>
-                                <td>{ subtotal.toLocaleString() }đ</td>
+                                <td>đ</td>
                             </tr>
                             <tr>
                                 <td>Tax</td>
@@ -80,7 +68,7 @@ function Contact ()
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>{ subtotal.toLocaleString() }đ</td>
+                                <td>đ</td>
                             </tr>
                         </tbody>
                     </table>

@@ -35,7 +35,13 @@ function About ()
     const handleAddToCart = () =>
     {
         dispatch( addProductRequest(
-            productState
+            {
+                id: productState.id,
+                name: productState.name,
+                image: productState.image,
+                price: productState.price,
+                quantity: 1
+            }
         ) )
      navigate("/contact")
     }

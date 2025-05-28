@@ -74,15 +74,18 @@ function* fetchProducts (action)
 function* handleAddToCart(action) {
     try {
       const product = action.payload;
-  console.log("product11111", product);
-      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      cartItems.push(product);
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        const stored = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const index = stored.findIndex(item => item.id === product.id);
+    if (index !== -1) {
+        stored[index].quantity += product.quantity;
+      } else {
+        stored.unshift(product);
+      }
   
-      yield put( addProductSuccess(product));
+      localStorage.setItem("cartItems", JSON.stringify(stored));
+  
+      yield put(addProductSuccess(product));
     } catch (error) {
-        console.error("Error adding product to cart:", error);
-        
     }
   }
 
