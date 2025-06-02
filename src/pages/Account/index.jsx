@@ -85,7 +85,7 @@ function Account ()
             <div className="container">
                 <div className="row">
                     <div className="col-2">
-                        <img src="" />
+                        <img src="https://michelacosta.com/images/messi2012.png" className='scale'/>
                     </div>
                     <div className="col-2">
                         <div className="form-container">

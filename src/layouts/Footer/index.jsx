@@ -12,7 +12,7 @@ function Footer() {
                       </div>
                   </div>
                   <div className="footer-col-2">
-                      <img src="http://127.0.0.1:5501/lo.png" />
+                      <img src="https://www.soccerbible.com/images/archive/Messi-Logo.jpg" />
                       <p>Download App for Android and ios mobile phone.</p>
                   </div>
                   <div className="footer-col-3">

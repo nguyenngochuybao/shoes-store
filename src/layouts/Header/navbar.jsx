@@ -21,7 +21,7 @@ function Navbar ()
       <div className="navbar">
           <div className="logo">
               <a href="">
-                  <img src="" width="60px" height="60px" />
+                  <img src="https://images.seeklogo.com/logo-png/27/2/lionel-messi-logo-png_seeklogo-274864.png" width="60px" height="60px" />
               </a>
           </div>
           <nav>

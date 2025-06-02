@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { removeProduct } from "../../redux/Action/action";
 
 function Contact ()
 {
- 
+
+    const dispatch = useDispatch();
+
     const cartItems = useSelector( ( state ) => state.cart?.cartItems || [] );
     console.log( "Cart Items:", cartItems );
-    
-    const handleRemoveItem = ( index ) =>
-    { 
 
+    const handleRemoveItem = ( index ) =>
+    {
+        dispatch( removeProduct( index ));
     }
+    
+    const subtotal = cartItems.reduce( ( acc, item ) =>
+    {
+        return acc + item.price * ( item.quantity || 1 );
+    }, 0);
     return (
         <>
             <div className="small-container cart-page">
@@ -60,7 +68,7 @@ function Contact ()
                         <tbody>
                             <tr>
                                 <td>Subtotal</td>
-                                <td>đ</td>
+                                <td>{ subtotal.toLocaleString() }đ</td>
                             </tr>
                             <tr>
                                 <td>Tax</td>
@@ -68,7 +76,7 @@ function Contact ()
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>đ</td>
+                                <td>{ subtotal.toLocaleString() }đ</td>
                             </tr>
                         </tbody>
                     </table>
